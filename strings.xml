@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Counters Of Machine</string>
+    <string name="modify_counters">Modify Counters</string>
+    <string name="add_counters">Add Counters</string>
+    <string name="delete_counters">Delete Counters</string>
+    <string name="export_tgm">Export TGM</string>
+    <string name="_0">0</string>
+    <string name="bill">Bill:</string>
+    <string name="hand_paid">Hand Paid:</string>
+    <string name="machine_id">Machine ID:</string>
+    <string name="please_insert_number_of_machine_and_counters">Please Insert Number Of Machine And Counters</string>
+    <string name="save">SAVE</string>
+    <string name="total_in">Total In:</string>
+    <string name="total_out">Total Out:</string>
+    <string name="ticket_in">Ticket In:</string>
+    <string name="ticket_out">Ticket Out:</string>
+    <string name="jackpot">Jackpot:</string>
+    <string name="drop">Drop:</string>
+</resources>
