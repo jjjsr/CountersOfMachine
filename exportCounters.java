@@ -59,19 +59,22 @@ public class exportCounters extends ActionBarActivity{
         Cursor curTxT = db.getCounters();
         item = new ArrayList<String>();
         int machineId;
-        Long totalIn, totalOut, handPaid, bill, jackpot, ticketIn, ticketOut;
+        Long totalIn, totalOut, drop, jackpot, cancelCredit, bill, ticketIn, ticketOut, bonus, hopper;
         if (curTxT.moveToFirst()) {
             do {
-                machineId   = curTxT.getInt(0);
-                totalIn     = curTxT.getLong(1);
-                totalOut    = curTxT.getLong(2);
-                handPaid    = curTxT.getLong(3);
-                bill        = curTxT.getLong(4);
-                jackpot     = curTxT.getLong(5);
-                ticketIn    = curTxT.getLong(6);
-                ticketOut   = curTxT.getLong(7);
+                machineId       = curTxT.getInt(0);
+                totalIn         = curTxT.getLong(1);
+                totalOut        = curTxT.getLong(2);
+                drop            = curTxT.getLong(3);
+                jackpot         = curTxT.getLong(4);
+                cancelCredit    = curTxT.getLong(5);
+                bill            = curTxT.getLong(6);
+                ticketIn        = curTxT.getLong(7);
+                ticketOut       = curTxT.getLong(8);
+                bonus           = curTxT.getLong(9);
+                hopper          = curTxT.getLong(10);
 
-                item.add(machineId+","+totalIn+","+totalOut+","+handPaid+","+bill+","+jackpot+","+ticketIn+","+ticketOut+"\n");
+                item.add(machineId+","+totalIn+","+totalOut+","+drop+","+jackpot+","+cancelCredit+","+bill+","+ticketIn+","+ticketOut+","+bonus+","+hopper+"\n");
             } while (curTxT.moveToNext());
         }
     }

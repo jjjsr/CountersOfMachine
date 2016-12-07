@@ -116,7 +116,7 @@ public class aggreCounters extends ActionBarActivity {
             bonus           = Long.parseLong(Bonus.getText().toString());
             hopper          = Long.parseLong(Hopper.getText().toString());
             db = new ConnectionDB(this);
-            db.addCounters(machineId, totalIn, totalOut, cancelCredit, bill, jackpot, ticketIn, ticketOut);
+            db.addCounters(machineId, totalIn, totalOut, drop, jackpot, cancelCredit, bill, ticketIn, ticketOut, bonus, hopper);
             Toast.makeText(getBaseContext(), "Successfully added machine counters!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(aggreCounters.this, watchCounters.class);
             startActivity(intent);

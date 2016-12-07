@@ -14,15 +14,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ConnectionDB extends SQLiteOpenHelper {
     private static final String DATABASE  = "CountersDB";
     private static final String Tmachine  = "Machine";
-    private static final String MachineId = "ComputerId", TotalIn="TotalCoinIn", TotalOut="TotalCoinOut",
-            HandPaid="TotalHandPaid", Bill="TotalBillIn", Jackpot="TotalJackpot", TicketIn="TotalTicketIn", TicketOut="TotalTicketOut";
+    private static final String MachineId = "ComputerId", TotalIn="TotalCoinIn", TotalOut="TotalCoinOut", Drop="TotalDrop",
+            Jackpot="TotalJackpot", CancelCredit="CancelCredit", Bill="TotalBillIn", TicketIn="TotalTicketIn",
+            TicketOut="TotalTicketOut", Bonus="TotalBonus", Hopper="TotalHopper";
     public ConnectionDB(Context context){
         super(context, DATABASE, null, 1);
     }
     public void onCreate(SQLiteDatabase db){
         try {
             db.execSQL("CREATE TABLE "+ Tmachine +" ("+ MachineId +" INTEGER PRIMARY KEY NOT NULL,"
-                    + TotalIn +" BIGINT,"+ TotalOut +" BIGINT,"+ HandPaid +" BIGINT,"+ Bill +" BIGINT,"+ Jackpot +" BIGINT,"+ TicketIn +" BIGINT,"+ TicketOut +" BIGINT)");
+                    + TotalIn +" BIGINT,"+ TotalOut +" BIGINT,"+ Drop +" BIGINT,"+ Jackpot +" BIGINT,"+ CancelCredit +" BIGINT,"
+                    + Bill +" BIGINT,"+ TicketIn +" BIGINT,"+ TicketOut +" BIGINT"+ Bonus +" BIGINT,"+ Hopper +" BIGINT)");
         }catch (SQLiteException e){
             e.printStackTrace();
         }
@@ -34,25 +36,24 @@ public class ConnectionDB extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
     }
-    /*public void close(){
-        this.getWritableDatabase().setTransactionSuccessful();
-        this.getWritableDatabase().endTransaction();
-        this.getWritableDatabase().close();
-    }*/
-    public void addCounters(int machineId, Long totalIn, Long totalOut, Long handPaid, Long bill, Long jackpot, Long ticketIn, Long ticketOut){
+    public void addCounters(int machineId, Long totalIn, Long totalOut, Long drop, Long jackpot, Long cancelCredit,
+                            Long bill, Long ticketIn, Long ticketOut, Long bonus, Long hopper){
         ContentValues values = new ContentValues();
-        values.put(MachineId, machineId);
-        values.put(TotalIn,   totalIn);
-        values.put(TotalOut,  totalOut);
-        values.put(HandPaid,  handPaid);
-        values.put(Bill,      bill);
-        values.put(Jackpot,   jackpot);
-        values.put(TicketIn,  ticketIn);
-        values.put(TicketOut, ticketOut);
+        values.put(MachineId,       machineId);
+        values.put(TotalIn,         totalIn);
+        values.put(TotalOut,        totalOut);
+        values.put(Drop,            drop);
+        values.put(Jackpot,         jackpot);
+        values.put(CancelCredit,    cancelCredit);
+        values.put(Bill,            bill);
+        values.put(TicketIn,        ticketIn);
+        values.put(TicketOut,       ticketOut);
+        values.put(Bonus,           bonus);
+        values.put(Hopper,          hopper);
         this.getWritableDatabase().insert(Tmachine,null,values);
     }
     public Cursor getCounters(){
-        String columnas[]={MachineId,TotalIn,TotalOut,HandPaid,Bill,Jackpot,TicketIn,TicketOut};
+        String columnas[]={MachineId,TotalIn,TotalOut,Drop,Jackpot,CancelCredit,Bill,TicketIn,TicketOut,Bonus,Hopper};
         Cursor c = this.getReadableDatabase().query(Tmachine,columnas,null,null,null,null,null);
         return c;
     }
@@ -60,7 +61,7 @@ public class ConnectionDB extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(TotalIn,   totalIn);
         values.put(TotalOut,  totalOut);
-        values.put(HandPaid,  handPaid);
+        values.put(CancelCredit,  handPaid);
         values.put(Bill,      bill);
         values.put(Jackpot,   jackpot);
         values.put(TicketIn,  ticketIn);
