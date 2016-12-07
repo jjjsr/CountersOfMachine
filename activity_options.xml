@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_options"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.jsandoval.countersofmachine.OptionsActivity"
+    android:orientation="horizontal">
+    <TableLayout
+        android:id="@+id/tl_1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:ignore="UselessParent">
+    <TableRow
+        android:id="@+id/tr_1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/ibtn_add"
+        tools:ignore="ContentDescription"
+        android:src="@mipmap/ic_menu_add_counters" />
+        <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/ibtn_view"
+            tools:ignore="ContentDescription"
+            android:src="@mipmap/ic_menu_view_counters" />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tr_2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/ibtn_delete"
+        tools:ignore="ContentDescription"
+        android:src="@mipmap/ic_menu_delete_counters" />
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/ibtn_export"
+        tools:ignore="ContentDescription"
+        android:src="@mipmap/ic_menu_export_counters" />
+    </TableRow>
+    </TableLayout>
+</LinearLayout>
