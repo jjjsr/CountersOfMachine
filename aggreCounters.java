@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class aggreCounters extends ActionBarActivity {
     EditText             MachineId, TotalIn, TotalOut, Drop, Jackpot, CancelCredit, Bill, TicketIn,TicketOut, Bonus, Hopper;
-    Button               SAVE;
+    Button               SAVE, MainMenu;
     int                  machineId;
     Long                 totalIn, totalOut, drop, jackpot, cancelCredit, bill, ticketIn,ticketOut, bonus, hopper;
     ConnectionDB         db;
@@ -24,6 +24,13 @@ public class aggreCounters extends ActionBarActivity {
         setContentView(R.layout.insert_counters);
         InitialElementInterface();
         PositionCursor();
+
+        MainMenu.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(aggreCounters.this, OptionsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         SAVE.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -118,10 +125,11 @@ public class aggreCounters extends ActionBarActivity {
             db = new ConnectionDB(this);
             db.addCounters(machineId, totalIn, totalOut, drop, jackpot, cancelCredit, bill, ticketIn, ticketOut, bonus, hopper);
             Toast.makeText(getBaseContext(), "Successfully added machine counters!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(aggreCounters.this, watchCounters.class);
-            startActivity(intent);
+            //Intent intent = new Intent(aggreCounters.this, watchCounters.class);
+            //startActivity(intent);
     }
     private void InitialElementInterface(){
+        MainMenu        = (Button)      findViewById(R.id.btn_menu);
         SAVE            = (Button)      findViewById(R.id.btn_save);
         MachineId       = (EditText)    findViewById(R.id.actv_Id);
         TotalIn         = (EditText)    findViewById(R.id.actv_TotalIn);

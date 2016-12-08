@@ -14,17 +14,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ConnectionDB extends SQLiteOpenHelper {
     private static final String DATABASE  = "CountersDB";
     private static final String Tmachine  = "Machine";
-    private static final String MachineId = "ComputerId", TotalIn="TotalCoinIn", TotalOut="TotalCoinOut", Drop="TotalDrop",
-            Jackpot="TotalJackpot", CancelCredit="CancelCredit", Bill="TotalBillIn", TicketIn="TotalTicketIn",
-            TicketOut="TotalTicketOut", Bonus="TotalBonus", Hopper="TotalHopper";
+    private static final String MachineId = "ComputerId", TotalIn="TotalCoinIn", TotalOut="TotalCoinOut", Drop="TotalDrop", Jackpot="TotalJackpot";
+    private static final String CancelCredit="CancelCredit", Bill="TotalBillIn", TicketIn="TotalTicketIn", TicketOut="TotalTicketOut", Bonus="TotalBonus", Hopper="TotalHopper";
+
     public ConnectionDB(Context context){
         super(context, DATABASE, null, 1);
     }
     public void onCreate(SQLiteDatabase db){
         try {
-            db.execSQL("CREATE TABLE "+ Tmachine +" ("+ MachineId +" INTEGER PRIMARY KEY NOT NULL,"
-                    + TotalIn +" BIGINT,"+ TotalOut +" BIGINT,"+ Drop +" BIGINT,"+ Jackpot +" BIGINT,"+ CancelCredit +" BIGINT,"
-                    + Bill +" BIGINT,"+ TicketIn +" BIGINT,"+ TicketOut +" BIGINT"+ Bonus +" BIGINT,"+ Hopper +" BIGINT)");
+            db.execSQL("CREATE TABLE "+ Tmachine +" ("+ MachineId +" INTEGER PRIMARY KEY NOT NULL,"+ TotalIn +" BIGINT,"+ TotalOut +" BIGINT,"+
+                    Drop +" BIGINT,"+ Jackpot +" BIGINT,"+ CancelCredit +" BIGINT,"+ Bill +" BIGINT,"+ TicketIn +" BIGINT,"+ TicketOut +" BIGINT,"+
+                    Bonus +" BIGINT,"+ Hopper +" BIGINT)");
         }catch (SQLiteException e){
             e.printStackTrace();
         }

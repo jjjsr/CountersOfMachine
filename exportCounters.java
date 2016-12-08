@@ -32,7 +32,7 @@ public class exportCounters extends ActionBarActivity{
         //Storage Folder
         File root = new File(Environment.getExternalStorageDirectory(), "Casino_Counters");
         //Date format to use in the name of the file
-        Date_Time = DateFormat.format("dd"+"MM"+"yy", System.currentTimeMillis()).toString();
+        Date_Time = DateFormat.format("dd"+"MM"+"yy", (System.currentTimeMillis()-(24*60*60*1000))).toString();
         //Name and extension of the export file
         File filepath = new File(root, "CO" + Date_Time + ".txt");
         try {
