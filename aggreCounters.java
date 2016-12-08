@@ -107,6 +107,8 @@ public class aggreCounters extends ActionBarActivity {
                     }while (Hopper.getText().toString().isEmpty());
                 }
                 AddCounters();
+                BlankCounters();
+                PositionCursor();
             }
         });
     }
@@ -155,5 +157,18 @@ public class aggreCounters extends ActionBarActivity {
         TicketOut.setSelection(TicketOut.getText().length());
         Bonus.setSelection(Bonus.getText().length());
         Hopper.setSelection(Hopper.getText().length());
+    }
+    private void BlankCounters(){
+        MachineId.setText("");
+        TotalIn.setText("0");
+        TotalOut.setText("0");
+        Drop.setText("0");
+        Jackpot.setText("0");
+        CancelCredit.setText("0");
+        Bill.setText("0");
+        TicketIn.setText("0");
+        TicketOut.setText("0");
+        Bonus.setText("0");
+        Hopper.setText("0");
     }
 }

@@ -24,30 +24,40 @@ public class exportCounters extends ActionBarActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
-        ExtractCounters();
+        ExtractCounters_to_TxT();
         finish();
     }
 
-    public void ExtractCounters(){
+    public void ExtractCounters_to_TxT(){
         //Storage Folder
         File root = new File(Environment.getExternalStorageDirectory(), "Casino_Counters");
+        File audit_root = new File(Environment.getExternalStorageDirectory(), "Audit_Counters");
         //Date format to use in the name of the file
         Date_Time = DateFormat.format("dd"+"MM"+"yy", (System.currentTimeMillis()-(24*60*60*1000))).toString();
         //Name and extension of the export file
         File filepath = new File(root, "CO" + Date_Time + ".txt");
+        File audit_filepath = new File(audit_root, "CO" + Date_Time + ".csv");
         try {
             //Check if the folder exists
-            if (!root.exists()) {
+            if (!root.exists() && !audit_root.exists()) {
                 root.mkdirs();
+                audit_root.mkdirs();
             }
             ExplorerDB();
             //Create the export file
             FileOutputStream writer = new FileOutputStream(filepath);
             OutputStreamWriter os = new OutputStreamWriter(writer);
+            FileOutputStream audit_writer = new FileOutputStream(audit_filepath);
+            OutputStreamWriter audit_os = new OutputStreamWriter(audit_writer);
             //Insert data to the file
             for (int k = 0; k < item.size(); k++){
-            os.write(item.get(k));}
+                os.write(item.get(k));}
             os.close();
+            audit_os.write("CODIGO,ENTRADA,SALIDA,DROP,JACKPOT,CANCEL,BILLETERO,TI,TO,BONUS,HOPPER\n");
+            for (int j = 0; j < item.size(); j++){
+                audit_os.write(item.get(j));}
+            audit_os.close();
+
             Toast.makeText(getBaseContext(), "File saved successfully!", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
