@@ -74,4 +74,9 @@ public class ConnectionDB extends SQLiteOpenHelper {
         db.delete(Tmachine,null,null);
         db.close();
     }
+    public void deleteOneCounter(int Id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("Delete From "+Tmachine+" Where "+MachineId+" = '"+Id+"';");
+        db.close();
+    }
 }
